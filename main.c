@@ -15,11 +15,11 @@ void logo(){
 }
 
 
-void encrypt(int key){
+void encrypt(const int key, const char* inputFileName){
 
   FILE *inputFile, *outputFile;
 
-  inputFile = fopen("input.txt", "r");
+  inputFile = fopen(inputFileName, "r");
   outputFile = fopen("encrypted.txt", "w");
 
   if (inputFile == NULL) {
@@ -48,10 +48,10 @@ void encrypt(int key){
 
 // ====================================================
 
-void decrypt(int key){
+void decrypt(const int key, const char* inputFileName){
   FILE *inputFile, *outputFile;
 
-  inputFile = fopen("input.txt", "r");
+  inputFile = fopen(inputFileName, "r");
   outputFile = fopen("decrypted.txt", "w");
 
   if (inputFile == NULL) {
@@ -81,6 +81,8 @@ int main() {
 
     logo();
 
+    char inputFileName[] = "input.txt";
+
     int start = 1;
     int value;
     int key;
@@ -98,13 +100,13 @@ int main() {
         case 1:
           printf(" Key for encrypt = ");
           scanf("%d", &key);
-          encrypt(key);
+          encrypt(key, inputFileName);
           break;
 
         case 2:
           printf(" Key for decrypt = ");
           scanf("%d", &key);
-          decrypt(key);
+          decrypt(key, inputFileName);
           break;
 
         case 0:
